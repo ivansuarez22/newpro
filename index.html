@@ -82,11 +82,12 @@
         <h1>¿Te quedas conmigo esta noche?</h1>
         <div class="buttons">
             <button id="yes" onclick="sayYes()">Sí</button>
-            <button id="no" onmouseover="moveNo()">No</button>
+            <button id="no" onmouseover="moveNo()" onclick="moveNo()">No</button>
         </div>
         <div id="message" class="message">¡Yo sabía que dirías que sí! 💖</div>
     </div>
     <script>
+        let moveDistance = 100;
         function sayYes() {
             let message = document.getElementById("message");
             message.style.opacity = "1";
@@ -95,9 +96,10 @@
         }
         function moveNo() {
             let button = document.getElementById("no");
-            let x = Math.random() * 200 - 100;
-            let y = Math.random() * 100 - 50;
+            let x = (Math.random() * moveDistance * 2) - moveDistance;
+            let y = (Math.random() * moveDistance * 2) - moveDistance;
             button.style.transform = `translate(${x}px, ${y}px)`;
+            moveDistance += 50; // Aumenta la distancia de movimiento en cada interacción
         }
         function createHeartsAndStars() {
             for (let i = 0; i < 10; i++) {
